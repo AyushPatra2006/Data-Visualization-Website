@@ -1,0 +1,87 @@
+{
+  "score": 36.0,
+  "tests": [
+    {
+      "test": "has_pages",
+      "points": 10,
+      "possible": 10
+    },
+    {
+      "test": "has_links",
+      "points": 6,
+      "possible": 6
+    },
+    {
+      "test": "browse",
+      "points": 20,
+      "possible": 20
+    },
+    {
+      "test": "rate",
+      "points": 0,
+      "possible": 5,
+      "log": [
+        "========================================",
+        "TEST rate (5)",
+        "Traceback (most recent call last):",
+        "  File \"/home/ayushpatra/labs-and-projects/projects/mp5/tester.py\", line 128, in run_all_tests",
+        "    points = t.fn()",
+        "  File \"/home/ayushpatra/labs-and-projects/projects/mp5/tester.py\", line 367, in rate",
+        "    assert status == \"200 OK\"",
+        "AssertionError",
+        "",
+        ""
+      ]
+    },
+    {
+      "test": "ab_test",
+      "points": 0,
+      "possible": 25,
+      "log": [
+        "========================================",
+        "TEST ab_test (25)",
+        "(a) did not alternate html in first 10 visits",
+        "(a) did not alternate html in first 10 visits",
+        "(a) did not alternate html in first 10 visits",
+        "(a) did not alternate html in first 10 visits",
+        "(a) did not alternate html in first 10 visits",
+        ""
+      ]
+    },
+    {
+      "test": "email",
+      "points": 0,
+      "possible": 14,
+      "log": [
+        "========================================",
+        "TEST email (14)",
+        "received status 404 NOT FOUND when trying to submit email",
+        ""
+      ]
+    },
+    {
+      "test": "has_svgs",
+      "points": 0,
+      "possible": 6,
+      "log": [
+        "========================================",
+        "TEST has_svgs (6)",
+        ""
+      ]
+    },
+    {
+      "test": "dashboard_examples",
+      "points": 0,
+      "possible": 14,
+      "log": [
+        "========================================",
+        "TEST dashboard_examples (14)",
+        "Expected at least three SVGs, but found 0 SVGs.",
+        ""
+      ]
+    }
+  ],
+  "lint": [],
+  "date": "07/15/2025",
+  "latency": 0.5780961513519287
+}
