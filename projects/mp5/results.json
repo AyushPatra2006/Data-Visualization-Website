@@ -1,5 +1,5 @@
 {
-  "score": 36.0,
+  "score": 66.0,
   "tests": [
     {
       "test": "has_pages",
@@ -18,35 +18,13 @@
     },
     {
       "test": "rate",
-      "points": 0,
-      "possible": 5,
-      "log": [
-        "========================================",
-        "TEST rate (5)",
-        "Traceback (most recent call last):",
-        "  File \"/home/ayushpatra/labs-and-projects/projects/mp5/tester.py\", line 128, in run_all_tests",
-        "    points = t.fn()",
-        "  File \"/home/ayushpatra/labs-and-projects/projects/mp5/tester.py\", line 367, in rate",
-        "    assert status == \"200 OK\"",
-        "AssertionError",
-        "",
-        ""
-      ]
+      "points": 5,
+      "possible": 5
     },
     {
       "test": "ab_test",
-      "points": 0,
-      "possible": 25,
-      "log": [
-        "========================================",
-        "TEST ab_test (25)",
-        "(a) did not alternate html in first 10 visits",
-        "(a) did not alternate html in first 10 visits",
-        "(a) did not alternate html in first 10 visits",
-        "(a) did not alternate html in first 10 visits",
-        "(a) did not alternate html in first 10 visits",
-        ""
-      ]
+      "points": 25,
+      "possible": 25
     },
     {
       "test": "email",
@@ -82,6 +60,6 @@
     }
   ],
   "lint": [],
-  "date": "07/15/2025",
-  "latency": 0.5780961513519287
+  "date": "07/16/2025",
+  "latency": 0.6536448001861572
 }
