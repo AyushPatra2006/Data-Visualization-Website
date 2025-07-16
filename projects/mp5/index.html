@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script>
+      function subscribe() {
+        var email = prompt("What is your email?", "example@gmail.com");
+
+        $.post({
+          type: "POST",
+          url: "email",
+          data: email,
+          contentType: "application/text; charset=utf-8",
+          dataType: "json"
+        }).done(function(data) {
+          alert(data);
+        }).fail(function(data) {
+          alert("POST failed");
+        });
+      }
+    </script>
+
   <meta charset="UTF-8">
   <title>Welcome</title>
 </head>
 <body style="background-color:skyblue;">
   <h1 style= "color:red">Welcome!</h1>
   <a href="browse.html">Browse</a><br>
-  {{donate_link}}
-    
+  {{donate_link}}<br>
+  <button onclick="subscribe()">Subscribe</button> 
   <p>Enjoy the data.</p>
 </body>
 </html>

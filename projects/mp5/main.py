@@ -9,7 +9,7 @@ Student 4: None
 import pandas as pd
 from flask import Flask, request, jsonify, make_response
 import time
-
+import re
 # Our data source: this loads the data we'll serve as HTML and JSON
 df = pd.read_csv("main.csv")
 
@@ -20,7 +20,7 @@ homepage_visits = 0
 clicks_from_A = 0
 clicks_from_B = 0
 locked_version = None
-
+num_subscribed = 0
 # ✅ GLOBAL FOR RATE LIMITING
 last_request_time = {}
 
@@ -98,6 +98,17 @@ def browse_json():
 def visitors_json():
     visitor_ips = list(last_request_time.keys())
     return jsonify(visitor_ips)
+@app.route('/email', methods=["POST"])
+def email():
+    global num_subscribed
+    email = str(request.data, "utf-8")
+    if re.fullmatch(r"[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-z]{3}", email):# 1
+        with open("emails.txt", "a") as f: # open file in append mode
+            f.write(email + "\n") # 2
+        with open("emails.txt") as f:
+            num_subscribed = len([line for line in f if line.strip()])
+        return jsonify(f"thanks, your subscriber number is {num_subscribed}!")
+    return jsonify("not a valid email")
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True, threaded=False) # don't change this line!

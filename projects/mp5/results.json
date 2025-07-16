@@ -1,5 +1,5 @@
 {
-  "score": 66.0,
+  "score": 80.0,
   "tests": [
     {
       "test": "has_pages",
@@ -28,14 +28,8 @@
     },
     {
       "test": "email",
-      "points": 0,
-      "possible": 14,
-      "log": [
-        "========================================",
-        "TEST email (14)",
-        "received status 404 NOT FOUND when trying to submit email",
-        ""
-      ]
+      "points": 14,
+      "possible": 14
     },
     {
       "test": "has_svgs",
@@ -61,5 +55,5 @@
   ],
   "lint": [],
   "date": "07/16/2025",
-  "latency": 0.6536448001861572
+  "latency": 0.625159502029419
 }
