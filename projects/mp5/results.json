@@ -1,5 +1,5 @@
 {
-  "score": 80.0,
+  "score": 100.0,
   "tests": [
     {
       "test": "has_pages",
@@ -33,27 +33,16 @@
     },
     {
       "test": "has_svgs",
-      "points": 0,
-      "possible": 6,
-      "log": [
-        "========================================",
-        "TEST has_svgs (6)",
-        ""
-      ]
+      "points": 6,
+      "possible": 6
     },
     {
       "test": "dashboard_examples",
-      "points": 0,
-      "possible": 14,
-      "log": [
-        "========================================",
-        "TEST dashboard_examples (14)",
-        "Expected at least three SVGs, but found 0 SVGs.",
-        ""
-      ]
+      "points": 14,
+      "possible": 14
     }
   ],
   "lint": [],
   "date": "07/16/2025",
-  "latency": 0.625159502029419
+  "latency": 13.940110206604004
 }

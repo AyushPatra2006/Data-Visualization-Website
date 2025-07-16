@@ -12,6 +12,11 @@ import time
 import re
 # Our data source: this loads the data we'll serve as HTML and JSON
 df = pd.read_csv("main.csv")
+import matplotlib
+matplotlib.use('Agg')  # ✅ Required for backend
+import matplotlib.pyplot as plt
+import io
+from flask import send_file
 
 app = Flask(__name__)
 
@@ -109,6 +114,52 @@ def email():
             num_subscribed = len([line for line in f if line.strip()])
         return jsonify(f"thanks, your subscriber number is {num_subscribed}!")
     return jsonify("not a valid email")
+@app.route('/dashboard1.svg')
+def dashboard1():
+    df = pd.read_csv("main.csv")
+    bins = int(request.args.get("bins", 10))  # query param
 
+    fig, ax = plt.subplots()
+    ax.hist(df["rating"], bins=bins, color='skyblue', edgecolor='black')
+    ax.set_title(f"Ratings Histogram ({bins} bins)")
+    ax.set_xlabel("Rating")
+    ax.set_ylabel("Frequency")
+
+    # Save to SVG
+    buf = io.BytesIO()
+    fig.savefig(buf, format="svg")
+    plt.close(fig)
+    buf.seek(0)
+
+    # Optional: save locally
+    with open("dashboard1.svg" if bins == 10 else "dashboard1-query.svg", "wb") as f:
+        f.write(buf.getvalue())
+
+    response = make_response(send_file(buf, mimetype="image/svg+xml"))
+    response.headers["Content-Type"] = "image/svg+xml"
+    return response
+
+@app.route('/dashboard2.svg')
+def dashboard2():
+    df = pd.read_csv("main.csv")
+
+    fig, ax = plt.subplots()
+    df.boxplot(column="rating", by="genre", ax=ax, grid=False)
+    ax.set_title("Rating by Genre")
+    ax.set_xlabel("Genre")
+    ax.set_ylabel("Rating")
+    plt.suptitle("")  # remove automatic suptitle from boxplot
+
+    buf = io.BytesIO()
+    fig.savefig(buf, format="svg")
+    plt.close(fig)
+    buf.seek(0)
+
+    with open("dashboard2.svg", "wb") as f:
+        f.write(buf.getvalue())
+
+    response = make_response(send_file(buf, mimetype="image/svg+xml"))
+    response.headers["Content-Type"] = "image/svg+xml"
+    return response
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True, threaded=False) # don't change this line!
